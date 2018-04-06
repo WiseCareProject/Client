@@ -3,7 +3,7 @@ import {ImageBackground, View, StyleSheet, Text} from 'react-native';
 
 const Footer = () => {
     return (
-        <ImageBackground source={require('../../images/footer-bg.png')} style={styles.items}>
+        <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
             <View style={{textAlign:'center', alignItems: 'center'}}>
                 <Text style={styles.number}>75<Text style={{fontSize: 18}}>kg</Text></Text>
                 <Text style={styles.desc}>Amount Feeding</Text>
@@ -31,31 +31,38 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         marginLeft: 20,
         marginRight: 20,
-        flex: 1
+        flex: 1,
+        fontFamily: "SourceSansPro-Regular",
+
     },
     number_active: {
         fontSize: 36,
         color: '#37e5ef',
         marginTop: -60,
-        marginBottom: 25
+        marginBottom: 25,
+        fontFamily: "SourceSansPro-Regular",
     },
     schedule: {
         marginTop: 50,
-        color: '#9bb3dc'
+        color: '#9bb3dc',
+        fontFamily: "SourceSansPro-Regular",
     },
     date: {
-        color: '#fff'
+        color: '#fff',
+        fontFamily: "SourceSansPro-Regular",
     },
     number: {
         marginTop: -70,
         fontSize: 33,
         color: '#4e6baf',
-        marginBottom: 25
+        marginBottom: 25,
+        fontFamily: "SourceSansPro-Regular",
     },
     desc: {
         marginTop: -20,
         fontSize:14,
-        color: '#9bb3dc'
+        color: '#9bb3dc',
+        fontFamily: "SourceSansPro-Regular",
     }
 });
 

@@ -3,15 +3,15 @@ import {ImageBackground, StyleSheet, View, Image, Text, TouchableOpacity} from '
 
 const BigButton = () => {
     return (
-        <ImageBackground source={require('../../images/bg-main-button.png')} style={styles.warp}>
+        <ImageBackground source={require('../../../../images/Main/bg-main-button.png')} style={styles.warp}>
             <View style={styles.spaces}>
-                <Image source={require('../../images/arrow-right.png')} style={styles.arrow}/>
+                <Image source={require('../../../../images/Main/arrow-right.png')} style={styles.arrow}/>
                 <TouchableOpacity style={styles.bigButton}>
-                    <ImageBackground source={require('../../images/bigbutton.png')} style={styles.bigButton}>
-                        <Text style={styles.btnText}>START FEED</Text>
+                    <ImageBackground source={require('../../../../images/Main/bigbutton.png')} style={styles.bigButton}>
+                        <Text style={styles.btnText}>START TEMP</Text>
                     </ImageBackground>
                 </TouchableOpacity>
-                <Image source={require('../../images/arrow-left.png')} style={styles.arrow}/>
+                <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
             </View>
         </ImageBackground>
     );
@@ -31,18 +31,19 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     bigButton: {
-        marginTop: 20,
+        marginTop: 10,
         alignSelf: 'center',
-        height: '76%',
-        width: '76%',
+        height: '86%',
+        width: '78%',
     },
     btnText: {
-        fontSize: 36,
+        fontSize: 46,
         alignSelf: 'center',
         color: '#fff',
-        marginTop: 60,
+        marginTop: 50,
         width: 120,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: "SourceSansPro-ExtraLight",
     },
     arrow: {
         alignSelf: 'center',

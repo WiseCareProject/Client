@@ -1,12 +1,27 @@
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, Alert, TouchableOpacity} from 'react-native';
 
 const Header = () => {
+
+    openMenu = () => {
+        Alert.alert('Open Menu');
+    }
+
+    openNotify = () => {
+        Alert.alert('Notify Menu');
+    }
+
     return (
         <View style={styles.header}>
-            <Image source={require('../../images/menu.png')} style={styles.menu} />
-            <Image source={require('../../images/logo.png')} style={styles.logo} />
-            <Image source={require('../../images/notify.png')} style={styles.notify} />
+
+            <TouchableOpacity onPress={() => this.openMenu()}>
+                <Image source={require('../../images/common/menu.png')} style={styles.menu}/>
+            </TouchableOpacity>
+            <Image source={require('../../images/common/logo.png')} style={styles.logo}/>
+            <TouchableOpacity onPress={() => this.openNotify()}>
+                <Image source={require('../../images/common/notify.png')} style={styles.notify}/>
+            </TouchableOpacity>
+
         </View>
     );
 };

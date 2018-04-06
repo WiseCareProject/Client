@@ -1,4 +1,7 @@
 {
   "name": "Wisecare",
-  "displayName": "Wisecare"
+  "displayName": "Wisecare",
+  "expo": {
+    "sdkVersion": "25.0.0"
+  }
 }
