@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, StyleSheet, Text, Alert} from 'react-native';
 import topNavigator from "../Navigations/TopNavigation";
 
-const TopMenu = () => {
+class TopMenu extends Component {
 
     setMenu = (navigate) => {
         Alert.alert(navigate);
-    }
+    };
 
-    return (
-        <View style={styles.menu}>
-            <Text style={styles.item} onPress={() => this.setMenu('Tab1')}>Temp</Text>
-            <Text style={styles.active} onPress={() => this.setMenu('Tab2')}>Feeding</Text>
-            <Text style={styles.item} onPress={() => this.setMenu('Tab3')}>Drinking</Text>
-        </View>
-    );
+    render() {
+        return (
+            <View style={styles.menu}>
+                <Text style={styles.item} onPress={() => this.setMenu('Tab1')}>Temp</Text>
+                <Text style={styles.active} onPress={() => this.setMenu('Tab2')}>Feeding</Text>
+                <Text style={styles.item} onPress={() => this.setMenu('Tab3')}>Drinking</Text>
+            </View>
+        );
+    };
 };
 
 const styles = StyleSheet.create({

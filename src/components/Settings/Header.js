@@ -1,29 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, StyleSheet, Image, Alert, TouchableOpacity, Text} from 'react-native';
 
-const Header = () => {
+class Header extends Component {
 
-    openMenu = () => {
-        Alert.alert('Open Menu');
-    }
+    constructor(props) {
+        super(props);
+    };
 
     openNotify = () => {
         Alert.alert('Notify Menu');
-    }
+    };
 
-    return (
-        <View style={styles.header}>
+    render() {
+        const { navigate } = this.props.navigation;
 
-            <TouchableOpacity onPress={() => this.openMenu()}>
-                <Image source={require('../../images/common/menu.png')} style={styles.menu}/>
-            </TouchableOpacity>
-            <Text style={styles.h5}>Settings</Text>
-            <TouchableOpacity onPress={() => this.openNotify()}>
-                <Image source={require('../../images/common/notify.png')} style={styles.notify}/>
-            </TouchableOpacity>
+        return (
+            <View style={styles.header}>
 
-        </View>
-    );
+                <TouchableOpacity onPress={() => navigate('Home')}>
+                    <Image source={require('../../images/common/menu.png')} style={styles.menu}/>
+                </TouchableOpacity>
+                <Text style={styles.h5}>Settings</Text>
+                <TouchableOpacity onPress={() => this.openNotify()}>
+                    <Image source={require('../../images/common/notify.png')} style={styles.notify}/>
+                </TouchableOpacity>
+
+            </View>
+        );
+    };
 };
 
 const styles = StyleSheet.create({

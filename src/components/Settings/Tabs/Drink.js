@@ -14,6 +14,7 @@ class Drink extends Component {
         this._handleDatePicked = this._handleDatePicked.bind(this);
         this._showDateTimePicker = this._showDateTimePicker.bind(this);
         this._hideDateTimePicker = this._hideDateTimePicker.bind(this);
+        this.parseDate = this.parseDate.bind(this);
     }
 
     _showDateTimePicker = () => {
@@ -29,9 +30,16 @@ class Drink extends Component {
     };
 
     _handleDatePicked = (date) => {
-        this.setState({chooseDate: date.toString()});
+        let dateFormatted = this.parseDate(date);
+        this.setState({chooseDate: dateFormatted});
         this._hideDateTimePicker();
     };
+
+    parseDate(date) {
+        day  = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        month  = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+        return `${day}-${month}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    }
 
     render() {
         return (

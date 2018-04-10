@@ -6,10 +6,14 @@ import TopNavigator from './Navigations/TopNavigation';
 
 class Main extends Component {
 
+    constructor(props) {
+        super(props);
+    };
+
     render() {
         return (
             <ImageBackground source={require('./../images/common/bg.png')} style={styles.backGround} >
-                <Header/>
+                <Header navigation={this.props.navigation}/>
                 <TopMenu />
                 <TopNavigator/>
             </ImageBackground>

@@ -5,18 +5,28 @@
  */
 
 import React, {Component} from 'react';
-import {View, StatusBar} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 import Login from './src/components/Login';
 import Settings from './src/components/Settings';
 import Main from './src/components/Main';
 
-export default class App extends Component<Props> {
+const NavigationApp = StackNavigator({
+        Login: {screen: Login},
+        Home: {screen: Main},
+        Setting: {screen: Settings},
+    },
+    {
+        headerMode: 'none',
+        navigationOptions: {
+            headerVisible: false,
+        }
+    }
+);
 
+export default class App extends Component<Props> {
     render() {
         return (
-            <Settings/>
-            /*<Login />*/
-            /*< Main />*/
+            <NavigationApp/>
         );
     }
 }

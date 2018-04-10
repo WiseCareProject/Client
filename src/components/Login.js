@@ -3,6 +3,10 @@ import {StyleSheet, ImageBackground, View, Image, TextInput, TouchableOpacity, T
 
 class Login extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     handleEmail = (text) => {
         this.setState({email: text})
     }
@@ -14,6 +18,8 @@ class Login extends Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
+
         return (
             <ImageBackground source={require('./../images/Login/bg.png')} style={styles.backGround}>
                 <View style={styles.header}>
@@ -43,7 +49,8 @@ class Login extends Component {
                     <TouchableOpacity
                         style={styles.submitButton}
                         onPress={
-                            () => this.login(this.state.email, this.state.password)
+                            // () => this.login(this.state.email, this.state.password)
+                            () => navigate('Home')
                         }>
                         <Image source={require('./../images/Login/login-btn.png')} style={styles.submit}/>
                     </TouchableOpacity>

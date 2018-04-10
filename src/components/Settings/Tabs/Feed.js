@@ -36,7 +36,9 @@ class Feed extends Component {
     };
 
     parseDate(date) {
-        return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+        day  = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        month  = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+        return `${day}-${month}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
     }
 
     render() {
