@@ -1,26 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {ImageBackground, View, StyleSheet, Text} from 'react-native';
+import axios from "axios/index";
 
-const Footer = () => {
-    return (
-        <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
-            <View style={{textAlign:'center', alignItems: 'center'}}>
-                <Text style={styles.number}>75<Text style={{fontSize: 18}}>kg</Text></Text>
-                <Text style={styles.desc}>Amount Feeding</Text>
-            </View>
-            <View style={{textAlign:'center', alignItems: 'center'}}>
-                <Text style={styles.number_active}>100<Text style={{fontSize: 18}}>kg</Text></Text>
-                <Text style={styles.desc}>Current Tank</Text>
+class Footer extends Component {
 
-                <Text style={styles.schedule}>Schedule Date</Text>
-                <Text style={styles.date}>16:54, 01-05-2018</Text>
-            </View>
-            <View style={{textAlign:'center', alignItems: 'center'}}>
-                <Text style={styles.number}>25<Text style={{fontSize: 18}}>kg</Text></Text>
-                <Text style={styles.desc}>Current Plate</Text>
-            </View>
-        </ImageBackground>
-    );
+    constructor(props) {
+        super(props);
+        this.state = {
+            platformId: 1,
+            plateAmount: 0,
+            tankAmount: 0
+        }
+    };
+
+
+    componentWillMount() {
+        let self = this;
+        axios.get('http://52.38.156.227:8081/getFullDetails')
+            .then(function (response) {
+                self.setState({
+                    showAlert: true,
+                    plateAmount: response.data.plateAmount,
+                    tankAmount: response.data.tankAmount
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+
+    render() {
+        return (
+            <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
+                <View>
+                    <Text style={styles.number}><Text style={{fontSize: 18}}>g</Text></Text>
+                    <Text style={styles.desc}>Amount Feeding</Text>
+                </View>
+                <View>
+                    <Text style={styles.number_active}><Text style={{fontSize: 18}}>{this.state.tankAmount}%</Text></Text>
+                    <Text style={styles.desc}>Current Tank</Text>
+
+                    <Text style={styles.schedule}>Schedule Date</Text>
+                    <Text style={styles.date}>16:54, 01-05-2018</Text>
+                </View>
+                <View>
+                    <Text style={styles.number}><Text style={{fontSize: 18}}>{this.state.plateAmount}g</Text></Text>
+                    <Text style={styles.desc}>Current Plate</Text>
+                </View>
+            </ImageBackground>
+        );
+    }
 };
 
 const styles = StyleSheet.create({
@@ -32,7 +61,6 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         marginRight: 20,
         flex: 1,
-        fontFamily: "SourceSansPro-Regular",
     },
     number_active: {
         fontSize: 36,
@@ -40,11 +68,15 @@ const styles = StyleSheet.create({
         marginTop: -60,
         marginBottom: 25,
         fontFamily: "SourceSansPro-Regular",
+        textAlign: 'center',
+        alignItems: 'center'
     },
     schedule: {
         marginTop: 50,
         color: '#9bb3dc',
         fontFamily: "SourceSansPro-Regular",
+        textAlign: 'center',
+        alignItems: 'center'
     },
     date: {
         color: '#fff',
@@ -59,7 +91,7 @@ const styles = StyleSheet.create({
     },
     desc: {
         marginTop: -20,
-        fontSize:14,
+        fontSize: 14,
         color: '#9bb3dc',
         fontFamily: "SourceSansPro-Regular",
     }

@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import {StyleSheet, ImageBackground} from 'react-native';
 import Header from './Settings/Header';
-import TopMenu from './Settings/TopMenu';
-import SettingNavigator from './Navigations/SettingNavigation';
+import Setting from './Settings/Setting';
 
 class Settings extends Component {
 
     constructor(props) {
         super(props);
-    };
+    }
 
     render() {
         return (
             <ImageBackground source={require('./../images/common/bg.png')} style={styles.backGround}>
                 <Header navigation={this.props.navigation}/>
-                <TopMenu/>
-                <SettingNavigator/>
+                <Setting />
             </ImageBackground>
         );
     }

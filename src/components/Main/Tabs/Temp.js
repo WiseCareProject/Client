@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import BigButton from './Temp/BigButton';
 import Footer from './Temp/Footer';
 import {StyleSheet, View} from 'react-native';

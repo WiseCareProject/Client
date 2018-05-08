@@ -1,20 +1,85 @@
-import React from 'react';
-import {ImageBackground, StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
+import React, {Component} from 'react';
+import {ImageBackground, StyleSheet, View, Image, Text, TouchableOpacity, Alert} from 'react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
+import axios from "axios/index";
 
-const BigButton = () => {
-    return (
-        <ImageBackground source={require('../../../../images/Main/bg-main-button.png')} style={styles.warp}>
-            <View style={styles.spaces}>
-                <Image source={require('../../../../images/Main/arrow-right.png')} style={styles.arrow}/>
-                <TouchableOpacity style={styles.bigButton}>
-                    <ImageBackground source={require('../../../../images/Main/bigbutton.png')} style={styles.bigButton}>
-                        <Text style={styles.btnText}>START FEED</Text>
-                    </ImageBackground>
-                </TouchableOpacity>
-                <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
-            </View>
-        </ImageBackground>
-    );
+class BigButton extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showAlert: false
+        };
+    };
+
+    feedButton() {
+        axios({
+            method: 'get',
+            url: 'http://52.38.156.227:8081/feedNow',
+            headers: {
+                Accept: 'application/json',
+            },
+        })
+            .then(function (response) {
+                this.setState({
+                    showAlert: true
+                });
+            }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    showAlert = () => {
+        this.setState({
+            showAlert: true
+        });
+    };
+
+    hideAlert = () => {
+        this.setState({
+            showAlert: false
+        });
+    };
+
+    render() {
+        const {showAlert} = this.state;
+        return (
+            <ImageBackground source={require('../../../../images/Main/bg-main-button.png')} style={styles.warp}>
+                <View style={styles.spaces}>
+                    <Image source={require('../../../../images/Main/arrow-right.png')} style={styles.arrow}/>
+                    <TouchableOpacity style={styles.bigButton} onPress={this.feedButton}>
+                        <ImageBackground source={require('../../../../images/Main/bigbutton.png')}
+                                         style={styles.bigButton}>
+                            <Text style={styles.btnText}>START FEED</Text>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                    <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
+                    <AwesomeAlert
+                        show={showAlert}
+                        showProgress={true}
+                        progressColor="#3f5891"
+                        title="AwesomeAlert"
+                        message="I have a message for you!"
+                        closeOnTouchOutside={true}
+                        closeOnHardwareBackPress={true}
+                        showCancelButton={true}
+                        showConfirmButton={true}
+                        cancelText="No, cancel"
+                        confirmText="Yes, delete it"
+                        confirmButtonColor="#3f5891"
+                        onCancelPressed={() => {
+                            this.hideAlert();
+                        }}
+                        onConfirmPressed={() => {
+                            this.hideAlert();
+                        }}
+                        overlayStyle={{backgroundColor:'transparent'}}
+                    />
+                </View>
+
+            </ImageBackground>
+        );
+    }
 };
 
 const styles = StyleSheet.create({
