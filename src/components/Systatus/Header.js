@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {View, StyleSheet, Image, Alert, TouchableOpacity} from 'react-native';
+import React, {Component} from 'react';
+import {View, StyleSheet, Image, Alert, TouchableOpacity, Text} from 'react-native';
 
 class Header extends Component {
 
@@ -9,15 +9,16 @@ class Header extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+
         return (
             <View style={styles.header}>
 
                 <TouchableOpacity onPress={() => navigate('Setting')}>
-                    <Image source={require('../../images/common/menu.png')} style={styles.menu}/>
+                    <Image source={require('../../images/common/back.png')} style={styles.back}/>
                 </TouchableOpacity>
-                <Image source={require('../../images/common/logo.png')} style={styles.logo}/>
-                <TouchableOpacity onPress={() => navigate('Statistics')}>
-                    <Image source={require('../../images/common/stats.png')} style={styles.stats}/>
+                <Text style={styles.h5}>System Status</Text>
+                <TouchableOpacity onPress={() => navigate('Home')}>
+                    {/*<Image source={require('../../images/common/notify.png')} style={styles.notify}/>*/}
                 </TouchableOpacity>
 
             </View>
@@ -34,22 +35,17 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
     },
-    logo: {
+    h5: {
         alignSelf: 'center',
-        height: 40,
-        width: 180,
-        resizeMode: 'stretch'
+        color: '#fff',
+        fontSize: 24,
+        fontFamily: "SourceSansPro-ExtraLight",
+        marginTop: 10
     },
-    menu: {
+    back: {
         marginTop: 10,
-        height: 14,
-        width: 21,
-        resizeMode: 'stretch'
-    },
-    stats: {
         height: 20,
         width: 20,
-        marginTop: 10,
         resizeMode: 'stretch'
     }
 });

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ImageBackground, View, Image, TextInput, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, ImageBackground, View, Image, TextInput, TouchableOpacity, Text, StatusBar} from 'react-native';
 
 class Login extends Component {
 
@@ -22,6 +22,7 @@ class Login extends Component {
 
         return (
             <ImageBackground source={require('./../images/Login/bg.png')} style={styles.backGround}>
+                <StatusBar hidden={true}/>
                 <View style={styles.header}>
                     <Image source={require('./../images/common/logo.png')} style={styles.logo}/>
                 </View>

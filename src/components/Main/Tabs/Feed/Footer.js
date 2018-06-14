@@ -9,7 +9,8 @@ class Footer extends Component {
         this.state = {
             platformId: 1,
             plateAmount: 0,
-            tankAmount: 0
+            tankAmount: 0,
+            amountFeed: 0
         }
     };
 
@@ -32,18 +33,18 @@ class Footer extends Component {
     render() {
         return (
             <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
-                <View>
-                    <Text style={styles.number}><Text style={{fontSize: 18}}>g</Text></Text>
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.number}><Text style={{fontSize: 18}}>{this.state.amountFeed}g</Text></Text>
                     <Text style={styles.desc}>Amount Feeding</Text>
                 </View>
-                <View>
+                <View style={{alignItems: 'center'}}>
                     <Text style={styles.number_active}><Text style={{fontSize: 18}}>{this.state.tankAmount}%</Text></Text>
                     <Text style={styles.desc}>Current Tank</Text>
 
                     <Text style={styles.schedule}>Schedule Date</Text>
                     <Text style={styles.date}>16:54, 01-05-2018</Text>
                 </View>
-                <View>
+                <View style={{alignItems: 'center'}}>
                     <Text style={styles.number}><Text style={{fontSize: 18}}>{this.state.plateAmount}g</Text></Text>
                     <Text style={styles.desc}>Current Plate</Text>
                 </View>

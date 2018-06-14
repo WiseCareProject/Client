@@ -14,11 +14,11 @@ class Header extends Component {
             <View style={styles.header}>
 
                 <TouchableOpacity onPress={() => navigate('Home')}>
-                    <Image source={require('../../images/common/back.png')} style={styles.menu}/>
+                    <Image source={require('../../images/common/back.png')} style={styles.back}/>
                 </TouchableOpacity>
-                <Text style={styles.h5}>Settings</Text>
-                <TouchableOpacity onPress={() => navigate('Systatus')}>
-                    <Image source={require('../../images/common/cpu.png')} style={styles.cpu}/>
+                <Text style={styles.h5}>Statistics</Text>
+                <TouchableOpacity onPress={() => navigate('Home')}>
+                    {/*<Image source={require('../../images/common/notify.png')} style={styles.notify}/>*/}
                 </TouchableOpacity>
 
             </View>
@@ -42,16 +42,10 @@ const styles = StyleSheet.create({
         fontFamily: "SourceSansPro-ExtraLight",
         marginTop: 10
     },
-    menu: {
+    back: {
         marginTop: 10,
-        height: 14,
-        width: 21,
-        resizeMode: 'stretch'
-    },
-    cpu: {
         height: 20,
         width: 20,
-        marginTop: 10,
         resizeMode: 'stretch'
     }
 });

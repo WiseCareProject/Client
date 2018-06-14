@@ -46,11 +46,11 @@ class BigButton extends Component {
                     <Image source={require('../../../../images/Main/arrow-right.png')} style={styles.arrow}/>
                     <TouchableOpacity style={styles.bigButton} onPress={this.fillWater}>
                         <ImageBackground source={require('../../../../images/Main/bigbutton.png')}
-                                         style={styles.bigButton}>
+                                         style={styles.buttonImage}>
                             <Text style={styles.btnText}>FILL WATER</Text>
                         </ImageBackground>
                     </TouchableOpacity>
-                    <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
+                    <Image source={require('../../../../images/Main/arrow-left.png')} style={[styles.arrow, {opacity: 0}]}/>
                 </View>
                 <AwesomeAlert
                     show={showAlert}
@@ -92,10 +92,13 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     bigButton: {
-        marginTop: 10,
         alignSelf: 'center',
-        height: '86%',
         width: '78%',
+    },
+    buttonImage: {
+        alignSelf: 'center',
+        width: '77%',
+        aspectRatio: 1,
     },
     btnText: {
         fontSize: 46,

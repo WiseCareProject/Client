@@ -1,27 +1,55 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {ImageBackground, View, StyleSheet, Text} from 'react-native';
+import axios from "axios/index";
 
-const Footer = () => {
-    return (
-        <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
-            <View>
-                <Text style={styles.number}><Text style={{fontSize: 18}}>°</Text></Text>
-                <Text style={styles.desc}>Low Temperatue</Text>
-            </View>
-            <View>
-                <Text style={styles.number}><Text style={{fontSize: 18}}>°</Text></Text>
-                <Text style={styles.desc}>Max Temperature</Text>
-            </View>
-        </ImageBackground>
-    );
+class Footer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            lowTemp: 20,
+            maxTemp: 40,
+        }
+    };
+
+
+    // componentWillMount() {
+        // let self = this;
+        // axios.get('http://52.38.156.227:8081/getFullDetails')
+        //     .then(function (response) {
+        //         self.setState({
+        //             showAlert: true,
+        //             plateAmount: response.data.plateAmount,
+        //             tankAmount: response.data.tankAmount
+        //         });
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+    // };
+
+    render() {
+        return (
+            <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
+                <View>
+                    <Text style={styles.number}><Text style={{fontSize: 32}}>{this.state.lowTemp}°</Text></Text>
+                    <Text style={styles.desc}>Low Temperatue</Text>
+                </View>
+                <View>
+                    <Text style={styles.number}><Text style={{fontSize: 32}}>{this.state.maxTemp}°</Text></Text>
+                    <Text style={styles.desc}>Max Temperature</Text>
+                </View>
+            </ImageBackground>
+        );
+    }
 };
+
 
 const styles = StyleSheet.create({
     items: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: 30,
+        paddingTop: 70,
         marginLeft: 20,
         marginRight: 20,
         flex: 1,

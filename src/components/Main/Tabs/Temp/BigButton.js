@@ -35,10 +35,10 @@ class BigButton extends Component {
         return (
             <ImageBackground source={require('../../../../images/Main/bg-main-button.png')} style={styles.warp}>
                 <View style={styles.spaces}>
-                    <Image source={require('../../../../images/Main/arrow-right.png')} style={styles.arrow}/>
+                    <Image source={require('../../../../images/Main/arrow-right.png')} style={[styles.arrow, {opacity: 0}]}/>
                     <TouchableOpacity style={styles.bigButton}>
                         <ImageBackground source={require('../../../../images/Main/bigbutton.png')}
-                                         style={styles.bigButton}>
+                                         style={styles.buttonImage}>
                             <Counter end={45} sign={'°'} size={120}/>
                         </ImageBackground>
                     </TouchableOpacity>
@@ -64,10 +64,13 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     bigButton: {
-        marginTop: 10,
         alignSelf: 'center',
-        height: '86%',
         width: '78%',
+    },
+    buttonImage: {
+        alignSelf: 'center',
+        width: '77%',
+        aspectRatio: 1,
     },
     btnText: {
         fontSize: 46,
