@@ -14,11 +14,11 @@ class Header extends Component {
             <View style={styles.header}>
 
                 <TouchableOpacity style={styles.click} onPress={() => navigate('Home')}>
-                    <Image source={require('../../images/common/back.png')} style={styles.back}/>
+                    <Image source={require('../../images/common/back.png')} style={styles.menu}/>
                 </TouchableOpacity>
-                <Text style={styles.h5}>Statistics</Text>
-                <TouchableOpacity style={styles.click} onPress={() => navigate('Home')}>
-                    {/*<Image source={require('../../images/common/notify.png')} style={styles.notify}/>*/}
+                <Text style={styles.h5}>Developer Tool</Text>
+                <TouchableOpacity style={styles.click} onPress={() => navigate('Systatus')}>
+                    <Image source={require('../../images/common/cpu.png')} style={styles.cpu}/>
                 </TouchableOpacity>
 
             </View>
@@ -42,11 +42,18 @@ const styles = StyleSheet.create({
         fontFamily: "SourceSansPro-ExtraLight",
         marginTop: 10
     },
-    back: {
+    menu: {
         marginTop: 10,
+        height: 14,
+        width: 21,
+        resizeMode: 'stretch'
+    },
+    cpu: {
         height: 20,
         width: 20,
-        resizeMode: 'stretch'
+        marginTop: 10,
+        resizeMode: 'stretch',
+        opacity: 0
     },
     click: {
         padding: 15,

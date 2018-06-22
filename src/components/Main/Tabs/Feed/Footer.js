@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ImageBackground, View, StyleSheet, Text} from 'react-native';
-import axios from "axios/index";
+import api from './../../../../api/requests';
 
 class Footer extends Component {
 
@@ -10,42 +10,35 @@ class Footer extends Component {
             platformId: 1,
             plateAmount: 0,
             tankAmount: 0,
-            amountFeed: 0
         }
     };
 
 
     componentWillMount() {
-        let self = this;
-        axios.get('http://52.38.156.227:8081/getFullDetails')
-            .then(function (response) {
-                self.setState({
-                    showAlert: true,
-                    plateAmount: response.data.plateAmount,
-                    tankAmount: response.data.tankAmount
-                });
+        api.getFoodDetails().then((res) => {
+            this.setState({
+                plateAmount: res.data.plateAmount,
+                tankAmount: res.data.tankAmount
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+        });
     };
 
     render() {
         return (
             <ImageBackground source={require('../../../../images/Main/footer-bg.png')} style={styles.items}>
                 <View style={{alignItems: 'center'}}>
-                    <Text style={styles.number}><Text style={{fontSize: 18}}>{this.state.amountFeed}g</Text></Text>
-                    <Text style={styles.desc}>Amount Feeding</Text>
+                    <Text style={styles.number}>{this.state.plateAmount < 0 ? 0 : parseInt(this.state.plateAmount)}<Text style={{fontSize: 18}}>%</Text></Text>
+                    <Text style={styles.desc}>Tank Amount</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
-                    <Text style={styles.number_active}><Text style={{fontSize: 18}}>{this.state.tankAmount}%</Text></Text>
-                    <Text style={styles.desc}>Current Tank</Text>
+                    {/*<Text style={styles.number_active}>{this.state.tankAmount}<Text style={{fontSize: 18}}>%</Text></Text>*/}
+                    {/*<Text style={styles.desc}>Current Tank</Text>*/}
 
-                    <Text style={styles.schedule}>Schedule Date</Text>
+                    <Text style={styles.schedule}>Next Schedule Feed</Text>
                     <Text style={styles.date}>16:54, 01-05-2018</Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
-                    <Text style={styles.number}><Text style={{fontSize: 18}}>{this.state.plateAmount}g</Text></Text>
+                    <Text style={styles.number}>{this.state.tankAmount < 0 ? 0 : parseInt(this.state.tankAmount)}<Text style={{fontSize: 18}}>g</Text></Text>
                     <Text style={styles.desc}>Current Plate</Text>
                 </View>
             </ImageBackground>
@@ -64,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     number_active: {
-        fontSize: 36,
+        fontSize: 28,
         color: '#37e5ef',
         marginTop: -60,
         marginBottom: 25,
@@ -85,9 +78,9 @@ const styles = StyleSheet.create({
     },
     number: {
         marginTop: -70,
-        fontSize: 33,
         color: '#4e6baf',
         marginBottom: 25,
+        fontSize: 28,
         fontFamily: "SourceSansPro-Regular",
     },
     desc: {

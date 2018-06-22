@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ImageBackground, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import Counter from 'react-native-counter';
-import axios from "axios/index";
+import api from './../../../../api/requests';
 
 class BigButton extends Component {
 
@@ -9,37 +9,36 @@ class BigButton extends Component {
         super(props);
         this.state = {
             platformId: 1,
-            plateAmount: 0,
-            tankAmount: 0
+            temperature: 0
         }
     };
 
+    componentWillMount() {
+        api.getTemperature().then((res) => {
+            this.setState({
+                temperature: res.data.amount,
+            });
+        });
+    };
 
-    // componentWillMount() {
-    //     let self = this;
-    //     axios.get('http://52.38.156.227:8081/getFullDetails')
-    //         .then(function (response) {
-    //             console.log(response)
-    //             self.setState({
-    //                 showAlert: true,
-    //                 plateAmount: response.data.plateAmount,
-    //                 tankAmount: response.data.tankAmount
-    //             });
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // };
+    refreshData = () => {
+        api.getTemperature().then((res) => {
+            this.setState({
+                temperature: res.data.amount,
+            });
+        });
+    };
 
     render() {
         return (
             <ImageBackground source={require('../../../../images/Main/bg-main-button.png')} style={styles.warp}>
                 <View style={styles.spaces}>
-                    <Image source={require('../../../../images/Main/arrow-right.png')} style={[styles.arrow, {opacity: 0}]}/>
-                    <TouchableOpacity style={styles.bigButton}>
+                    <Image source={require('../../../../images/Main/arrow-right.png')}
+                           style={[styles.arrow, {opacity: 0}]}/>
+                    <TouchableOpacity style={styles.bigButton} onPress={() => this.refreshData()}>
                         <ImageBackground source={require('../../../../images/Main/bigbutton.png')}
                                          style={styles.buttonImage}>
-                            <Counter end={45} sign={'°'} size={120}/>
+                            <Counter end={this.state.temperature} sign={'°'} size={120}/>
                         </ImageBackground>
                     </TouchableOpacity>
                     <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
@@ -79,6 +78,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
         width: 120,
         textAlign: 'center',
+        justifyContent: 'center',
         fontFamily: "SourceSansPro-ExtraLight",
     },
     arrow: {

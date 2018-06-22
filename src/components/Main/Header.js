@@ -11,12 +11,11 @@ class Header extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.header}>
-
-                <TouchableOpacity onPress={() => navigate('Setting')}>
+                <TouchableOpacity style={styles.click} onPress={() => navigate('Setting')} onLongPress={() => navigate('Admin')}>
                     <Image source={require('../../images/common/menu.png')} style={styles.menu}/>
                 </TouchableOpacity>
                 <Image source={require('../../images/common/logo.png')} style={styles.logo}/>
-                <TouchableOpacity onPress={() => navigate('Statistics')}>
+                <TouchableOpacity style={styles.click} onPress={() => navigate('Statistics')}>
                     <Image source={require('../../images/common/stats.png')} style={styles.stats}/>
                 </TouchableOpacity>
 
@@ -31,8 +30,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingTop: 30,
-        marginLeft: 30,
-        marginRight: 30,
+        marginLeft: 20,
+        marginRight: 20,
     },
     logo: {
         alignSelf: 'center',
@@ -51,6 +50,9 @@ const styles = StyleSheet.create({
         width: 20,
         marginTop: 10,
         resizeMode: 'stretch'
+    },
+    click: {
+        padding: 15,
     }
 });
 

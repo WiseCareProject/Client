@@ -13,11 +13,11 @@ class Header extends Component {
         return (
             <View style={styles.header}>
 
-                <TouchableOpacity onPress={() => navigate('Setting')}>
+                <TouchableOpacity style={styles.click} onPress={() => navigate('Setting')}>
                     <Image source={require('../../images/common/back.png')} style={styles.back}/>
                 </TouchableOpacity>
                 <Text style={styles.h5}>System Status</Text>
-                <TouchableOpacity onPress={() => navigate('Home')}>
+                <TouchableOpacity style={styles.click} onPress={() => navigate('Home')}>
                     {/*<Image source={require('../../images/common/notify.png')} style={styles.notify}/>*/}
                 </TouchableOpacity>
 
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingTop: 30,
-        marginLeft: 30,
-        marginRight: 30,
+        marginLeft: 20,
+        marginRight: 20,
     },
     h5: {
         alignSelf: 'center',
@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         resizeMode: 'stretch'
+    },
+    click: {
+        padding: 15,
     }
 });
 

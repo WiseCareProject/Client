@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {ImageBackground, StyleSheet, View, Image, Text, TouchableOpacity, Alert} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import axios from "axios/index";
+import api from './../../../../api/requests';
+import SvgButton from './buttonSvg';
 
 class BigButton extends Component {
 
@@ -13,20 +14,8 @@ class BigButton extends Component {
     };
 
     feedButton() {
-        axios({
-            method: 'get',
-            url: 'http://52.38.156.227:8081/feedNow',
-            headers: {
-                Accept: 'application/json',
-            },
-        })
-            .then(function (response) {
-                this.setState({
-                    showAlert: true
-                });
-            }).catch(function (error) {
-            console.log(error);
-        });
+        let self = this;
+        api.feedNow(self);
     }
 
     showAlert = () => {
@@ -52,6 +41,7 @@ class BigButton extends Component {
                                          style={styles.buttonImage}>
                             <Text style={styles.btnText}>START FEED</Text>
                         </ImageBackground>
+                        {/*<SvgButton />*/}
                     </TouchableOpacity>
                     <Image source={require('../../../../images/Main/arrow-left.png')} style={styles.arrow}/>
                     <AwesomeAlert
@@ -73,7 +63,7 @@ class BigButton extends Component {
                         onConfirmPressed={() => {
                             this.hideAlert();
                         }}
-                        overlayStyle={{backgroundColor:'transparent'}}
+                        overlayStyle={{backgroundColor: 'transparent'}}
                     />
                 </View>
 
@@ -105,12 +95,13 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
     },
     btnText: {
-        fontSize: 46,
+        fontSize: 44,
         alignSelf: 'center',
         color: '#fff',
-        marginTop: 50,
-        width: 120,
+        marginTop: 55,
+        width: 150,
         textAlign: 'center',
+        justifyContent: 'center',
         fontFamily: "SourceSansPro-ExtraLight",
     },
     arrow: {

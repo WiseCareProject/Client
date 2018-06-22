@@ -1,9 +1,9 @@
 import React from 'react';
-import {Image, StyleSheet} from 'react-native';
 import {TabNavigator} from "react-navigation";
 import Temp from "../Main/Tabs/Temp";
 import Feed from "../Main/Tabs/Feed";
 import Drink from "../Main/Tabs/Drink";
+import Camera from "../Main/Tabs/Camera";
 
 const topNavigator = TabNavigator({
     Tab1: {
@@ -26,6 +26,13 @@ const topNavigator = TabNavigator({
             tabBarVisible: true,
             title: 'Drink'
         }
+    },
+    Tab4: {
+        screen: Camera,
+        navigationOptions: {
+            tabBarVisible: true,
+            title: 'Camera'
+        }
     }
 }, {
     lazy: false,
@@ -40,12 +47,12 @@ const topNavigator = TabNavigator({
         upperCaseLabel: false,
         style: {
             backgroundColor: 'rgba(255,255,255,0)',
-            marginLeft: '10%',
-            width: '80%',
-            elevation: 0
+            width: '100%',
+            elevation: 0,
         },
         labelStyle: {
-            fontSize: 20,
+            fontSize: 18,
+            marginTop: -5,
             fontFamily: "SourceSansPro-Regular",
         },
         indicatorStyle: {

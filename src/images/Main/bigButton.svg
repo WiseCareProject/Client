@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250px" height="250px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;">
+    <circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.2)"/>
+    <path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#41eeee" transform="rotate(229.27 50 51)">
+        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="4s" begin="0s" repeatCount="indefinite"/>
+    </path>
+    <path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#00b3f3" transform="rotate(327.809 50.0001 51)">
+        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="2s" begin="0s" repeatCount="indefinite"/>
+    </path>
+    <text style="font-family: SourceSansPro-ExtraLight; font-size: 22px" x="27" y="47" fill="white">FEED</text>
+    <text style="font-family: SourceSansPro-ExtraLight; font-size: 22px" x="27" y="70" fill="white">NOW</text>
+</svg>

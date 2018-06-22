@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {ImageBackground, StyleSheet, View, Image, TouchableOpacity, Text} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import axios from "axios/index";
+import api from './../../../../api/requests';
+
 class BigButton extends Component {
 
     constructor(props) {
@@ -10,20 +11,8 @@ class BigButton extends Component {
     };
 
     fillWater() {
-        axios({
-            method: 'get',
-            url: 'http://52.38.156.227:8081/fillUpWater',
-            headers: {
-                Accept: 'application/json',
-            },
-        })
-            .then(function (response) {
-                this.setState({
-                    showAlert: true
-                });
-            }).catch(function (error) {
-            console.log(error);
-        });
+        let self = this;
+        // api.fillWater(self);
     }
 
     showAlert = () => {
@@ -50,7 +39,7 @@ class BigButton extends Component {
                             <Text style={styles.btnText}>FILL WATER</Text>
                         </ImageBackground>
                     </TouchableOpacity>
-                    <Image source={require('../../../../images/Main/arrow-left.png')} style={[styles.arrow, {opacity: 0}]}/>
+                    <Image source={require('../../../../images/Main/arrow-left.png')} style={[styles.arrow]}/>
                 </View>
                 <AwesomeAlert
                     show={showAlert}
@@ -107,6 +96,7 @@ const styles = StyleSheet.create({
         marginTop: 45,
         width: 150,
         textAlign: 'center',
+        justifyContent: 'center',
         fontFamily: "SourceSansPro-ExtraLight",
     },
     arrow: {
